@@ -399,10 +399,15 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
         return AlertDialog(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           title: Row(
-            children: const [
-              Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 28),
-              SizedBox(width: 8),
-              Text('Booking Successful', style: TextStyle(fontWeight: FontWeight.bold)),
+            children: [
+              const Icon(Icons.check_circle_rounded, color: Color(0xFF10B981), size: 28),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  'Booking Successful',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
             ],
           ),
           content: const Text('Your slot booking has been confirmed and saved!'),
@@ -440,9 +445,11 @@ class _VenueDetailPageState extends State<VenueDetailPage> {
                 size: 28,
               ),
               const SizedBox(width: 8),
-              Text(
-                isDoubleBooked ? 'Slot Already Taken' : 'Booking Failed',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+              Expanded(
+                child: Text(
+                  isDoubleBooked ? 'Slot Already Taken' : 'Booking Failed',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),
