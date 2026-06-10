@@ -12,7 +12,7 @@ This is a monorepo structured as:
 
 ---
 
-## Architecture Diagram
+<!-- ## Architecture Diagram
 
 ```mermaid
 graph TD
@@ -22,7 +22,7 @@ graph TD
   subgraph Concurrency Protection
     DB -->|Deterministic ID check| Tx[Transaction lock: venue_date_timeSlot]
   end
-```
+``` -->
 
 ### Backend Concurrency Approach
 The one hard rule is that a slot can never be double-booked. To guarantee this, we execute bookings inside a **Firestore Transaction** using a deterministic booking document ID in the format: `${venueId}_${date}_${timeSlot}`. 
@@ -96,14 +96,7 @@ To seed the venues into your live Cloud Firestore:
    ```
    *The local server runs on port 5000.*
 
-#### Option 3: Running inside Docker
-1. Build and run:
-   ```bash
-   docker build -t quickslot-server .
-   docker run -p 5000:5000 -v "%cd%/firebase-service-account.json:/usr/src/app/firebase-service-account.json" quickslot-server
-   ```
 
----
 
 ### Part B — Flutter Client (`/app`)
 
@@ -141,15 +134,3 @@ To seed the venues into your live Cloud Firestore:
 2. **WebSockets:** We used clean, periodic HTTP polling (every 5 seconds) instead of a custom WebSocket server to fetch slot status updates. This is extremely robust, matches the requirements, and avoids maintaining complex WebSocket socket connections on the server side.
 
 ---
-
-## What We'd Do with One More Day
-
-1. **Real-time Firestore Listeners:** Instead of HTTP polling, we would utilize Firebase's native `snapshots()` listener to push instantaneous UI slot status updates to the Flutter app without server overhead.
-2. **Integration Tests:** Write a comprehensive suite of Flutter integration tests executing the booking flow automatically using a mock driver.
-
----
-
-## AI Usage Note
-
-* **What we used AI for:** AI was used to generate data models, scaffold clean architecture folders, write unit tests for the Bloc, and formulate the concurrency simulation test.
-* **One thing it got wrong that we caught and fixed:** The AI tried to use `Colors.emerald` in the Flutter presentation widgets, which failed compilation because `emerald` is not defined in Flutter's Material `Colors` library. We caught this compilation error during testing and replaced it with a set of custom Tailwind-equivalent hex colors (`const Color(0xFF10B981)` for emerald green) to maintain the premium visuals.
