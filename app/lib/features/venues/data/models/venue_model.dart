@@ -5,7 +5,7 @@ part 'venue_model.freezed.dart';
 part 'venue_model.g.dart';
 
 @freezed
-class VenueModel with _$VenueModel {
+abstract class VenueModel with _$VenueModel {
   const VenueModel._();
 
   const factory VenueModel({

@@ -5,7 +5,7 @@ part 'booking_model.freezed.dart';
 part 'booking_model.g.dart';
 
 @freezed
-class BookingModel with _$BookingModel {
+abstract class BookingModel with _$BookingModel {
   const BookingModel._();
 
   const factory BookingModel({

@@ -5,7 +5,7 @@ part 'slot_model.freezed.dart';
 part 'slot_model.g.dart';
 
 @freezed
-class SlotModel with _$SlotModel {
+abstract class SlotModel with _$SlotModel {
   const SlotModel._();
 
   const factory SlotModel({

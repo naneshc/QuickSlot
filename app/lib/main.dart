@@ -28,10 +28,8 @@ void main() async {
   final sharedPrefs = await SharedPreferences.getInstance();
 
   // BASE API URL
-  // NOTE: For Android Emulator, use 10.0.2.2.
-  // For iOS Simulator, use localhost.
-  // For physical testing on two devices, change this to your machine's Local Network IP (e.g. 192.168.1.10)
-  const String backendBaseUrl = 'http://10.0.2.2:5000'; 
+  // Deployed on Firebase Cloud Functions
+  const String backendBaseUrl = 'https://us-central1-quickslot-dec4a.cloudfunctions.net/quickslot'; 
   
   final apiClient = ApiClient(baseUrl: backendBaseUrl);
 
